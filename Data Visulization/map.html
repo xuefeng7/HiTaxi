@@ -17,12 +17,31 @@
 <div id='map'></div>
 <script>
 L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
-var map = L.mapbox.map('map', 'mapbox.light')
+var map = L.mapbox.map('map', 'mapbox.dark')
     .setView([40.73, -74.011], 13); // set view to NYC nearby
 // var dataLayer = L.geoJson('./popular_venue.geojson');
-var geojsonLayer = new L.GeoJSON.AJAX("./points2.geojson");
-console.log(geojsonLayer);
+var ptStyle = {
+    "color": "#000FF",
+    "weight": 5,
+    "opacity": 0.65
+};
+
+var geojsonMarkerOptions = {
+    radius: 5,
+    fillColor: "#f44286",
+    stroke:false,
+    color: "#000",
+    weight: 1,
+    fillOpacity: 0.6
+};
+var geojsonLayer = new L.GeoJSON.AJAX('./point2.geojson',{
+	pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, geojsonMarkerOptions);
+    }
+});
+// console.log(geojsonLayer["_layers"]);
 geojsonLayer.addTo(map);
+
 // L.circle([40.73, -74.011], 200, {
 // 	fillColor: '#f44274',
 // 	stroke: false
