@@ -16,6 +16,8 @@
 <body>
 <div id='map'></div>
 <script>
+// to host on localhost, run the following in terminal
+// python -m SimpleHTTPServer 8000
 L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
 var map = L.mapbox.map('map', 'mapbox.dark')
     .setView([40.73, -74.011], 13); // set view to NYC nearby
@@ -31,11 +33,13 @@ var geojsonMarkerOptions = {
 var geojsonLayer = new L.GeoJSON.AJAX('./popular_venue.geojson',{
 	pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, geojsonMarkerOptions);
+    },
+    onEachFeature: function (feature, layer) {
+         layer.bindPopup(feature.properties.name);
     }
-});
+})
 // console.log(geojsonLayer["_layers"]);
 geojsonLayer.addTo(map);
-
 // L.circle([40.73, -74.011], 200, {
 // 	fillColor: '#f44274',
 // 	stroke: false
