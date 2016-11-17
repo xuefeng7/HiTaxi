@@ -22,45 +22,77 @@
 // python -m SimpleHTTPServer 8000
 mapboxgl.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
 // L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
-// var map = L.mapbox.map('map', 'mapbox.dark')
-//     .setView([40.73, -74.011], 13); // set view to NYC nearby
+// var map = L.mapbox.map('map', 'mapbox.light')
+    // .setView([40.73, -74.011], 13); // set view to NYC nearby
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v9',
+    style: 'mapbox://styles/mapbox/light-v9',
     center: [-74.011, 40.73],
     zoom: 10
 });
-
 map.on('load', function(){
+            // map.setPaintProperty('water', 'fill-color', '#0f6296');
+            // $.getJSON("./clustercenters.geojson", function(centers) {
+                
+            //     for(var i = 0; i < centers["features"].length; i++) {
 
-     $.getJSON("color_500.json", function(colors) {
-            var layers = [];
-            for(var i = 0; i < colors.length; i++) {
-                color = colors[i]['color'];
-                layers.push(color);
-            }
-            layers.forEach(function (layer, i) {
-                var src_id = "venues-" + (i);
-                map.addSource(src_id, {
-                    type: "geojson",
-                    // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+            //         center = centers["features"][i]
+            //         log = center["geometry"]["coordinates"][0]
+            //         lat = center["geometry"]["coordinates"][1]
+            //         L.circle([lat, log], 200,{
+            //             fillColor: '#f46842',
+            //             stroke: false,
+            //             fillOpacity: 0.7
+            //         }
+            //             ).addTo(map);
+            //     }
+            // });
+            map.addSource("centers", {
+                  type: "geojson",
+                     // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
                     // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
-                    data: './clusters_500/popular_venue_' + (i + 1) + '.geojson'
-                });
-
-                map.addLayer({
-                    "id": "cluster-" + (i + 1),
-                    "type": "circle",
-                    "source": src_id,
-                    "paint": {
-                        "circle-color": layer,
-                        'circle-opacity': 0.6,
-                        "circle-radius": 1.8
-                    }
-                });
+                  data: './clustercenters.geojson'
+                    //'./clusters_500/popular_venue_' + (i + 1) + '.geojson'
             });
-    });
-})
+
+            map.addLayer({
+                'id': 'center-layer',
+                "type": "circle",
+                "source": 'centers',
+                "paint": {
+                    "circle-color": '#e820ac',
+                    'circle-opacity': 0.7,
+                    "circle-radius": 3
+                }
+            });
+    //  $.getJSON("color_500.json", function(colors) {
+    //         var layers = [];
+    //         for(var i = 0; i < colors.length; i++) {
+    //             color = colors[i]['color'];
+    //             layers.push(color);
+    //         }
+    //         layers.forEach(function (layer, i) {
+    //             var src_id = "venues-" + (i);
+    //             map.addSource(src_id, {
+    //                 type: "geojson",
+    //                 // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+    //                 // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+    //                 data: './clusters_500/popular_venue_' + (i + 1) + '.geojson'
+    //             });
+
+    //             map.addLayer({
+    //                 "id": "cluster-" + (i + 1),
+    //                 "type": "circle",
+    //                 "source": src_id,
+    //                 "paint": {
+    //                     "circle-color": layer,
+    //                     'circle-opacity': 0.6,
+    //                     "circle-radius": 1.8
+    //                 }
+    //             });
+    //         });
+    // });
+});
     
 // $.getJSON('./clusters/popular_venue_'+ (i + 1) +'.geojson', function(venues){
         //     console.log(venues);
