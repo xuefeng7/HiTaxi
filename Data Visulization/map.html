@@ -5,6 +5,8 @@
 <title>Popular Area in NYC</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.27.0/mapbox-gl.css' rel='stylesheet' />
 <script src="./js/jquery-3.1.1.min.js"></script>
 <script src="./js/leaflet.ajax.min.js"></script>
 <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
@@ -18,32 +20,74 @@
 <script>
 // to host on localhost, run the following in terminal
 // python -m SimpleHTTPServer 8000
-L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
-var map = L.mapbox.map('map', 'mapbox.dark')
-    .setView([40.73, -74.011], 13); // set view to NYC nearby
-//marker style
-var geojsonMarkerOptions = {
-    radius: 5,
-    fillColor: "#f44286",
-    stroke:false,
-    color: "#000",
-    weight: 1,
-    fillOpacity: 0.6
-};
-var geojsonLayer = new L.GeoJSON.AJAX('./popular_venue.geojson',{
-	pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, geojsonMarkerOptions);
-    },
-    onEachFeature: function (feature, layer) {
-         layer.bindPopup(feature.properties.name);
-    }
+mapboxgl.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
+// L.mapbox.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3BkazYyMDVhbW4ifQ.4HKRO2_neO4SDTR2l9-Q1g';
+// var map = L.mapbox.map('map', 'mapbox.dark')
+//     .setView([40.73, -74.011], 13); // set view to NYC nearby
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    center: [-74.011, 40.73],
+    zoom: 10
+});
+
+map.on('load', function(){
+
+     $.getJSON("color_500.json", function(colors) {
+            var layers = [];
+            for(var i = 0; i < colors.length; i++) {
+                color = colors[i]['color'];
+                layers.push(color);
+            }
+            layers.forEach(function (layer, i) {
+                var src_id = "venues-" + (i);
+                map.addSource(src_id, {
+                    type: "geojson",
+                    // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+                    // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+                    data: './clusters_500/popular_venue_' + (i + 1) + '.geojson'
+                });
+
+                map.addLayer({
+                    "id": "cluster-" + (i + 1),
+                    "type": "circle",
+                    "source": src_id,
+                    "paint": {
+                        "circle-color": layer,
+                        'circle-opacity': 0.6,
+                        "circle-radius": 1.8
+                    }
+                });
+            });
+    });
 })
-// console.log(geojsonLayer["_layers"]);
-geojsonLayer.addTo(map);
-// L.circle([40.73, -74.011], 200, {
-// 	fillColor: '#f44274',
-// 	stroke: false
-// }).addTo(map);
+    
+// $.getJSON('./clusters/popular_venue_'+ (i + 1) +'.geojson', function(venues){
+        //     console.log(venues);
+        //     pts = venues['features']
+        //     for (var j = 0; j < pts.length; j++) {
+        //         pt = pts[j]['geometry'];
+        //         var ptStyle = {
+        //             radius: 5,
+        //             fillColor: color,
+        //             stroke:false,
+        //             color: color,
+        //             weight: 1,
+        //             fillOpacity: 0.6
+        //         };
+        //         var ptLayer = L.GeoJSON(pt, {
+        //             style: ptStyle
+        //         });
+        //         ptLayer.addTo(map);
+        //     }
+        // })
+        // var geojsonLayer = new L.GeoJSON.AJAX('./clusters/popular_venue_'+ (i + 1) +'.geojson',{
+        //     pointToLayer: function (feature, latlng) {
+        //         return L.circleMarker(latlng, geojsonMarkerOptions);
+        //     }
+        // })
+        // geojsonLayer.addTo(map);
+
 </script>
 </body>
 </html>
