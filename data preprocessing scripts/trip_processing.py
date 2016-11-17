@@ -7,7 +7,7 @@ weather_dict = json.loads(open('weather_processed.json','r').read())
 region_dict = {}
 
 offset = 0
-limit = '500'
+limit = '1'
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
 # output = open('trips_processed.json', 'a+')
 
@@ -55,6 +55,8 @@ def get_weather_info(time):
 	time_arr = (pick_up_time.split("T")[0]).split('-')
 	year = time_arr[0]
 	month = time_arr[1]
+	if month[0] == "0":
+		month = month[1]
 	date = time_arr[2]
 	# the key for searching weather in weather dict
 	year_search_key = year + '/' + month + '/' + date
@@ -73,7 +75,7 @@ def get_weather_info(time):
 # def get_distance(log_1, lat_1, log_2, lat_2):
 
 
-for trip in query_trip(link):
-	print parse_trip(trip)
+# for trip in query_trip(link):
+print query_trip(link) #parse_trip(trip)
 
 
