@@ -1,12 +1,9 @@
 import urllib2
 import json
-<<<<<<< HEAD
 from math import cos,asin,sqrt
-
-=======
 import datetime
 import calendar
->>>>>>> origin/master
+
 
 # load popular cluster dictionary
 weather_dict = json.loads(open('weather_processed.json','r').read())
@@ -14,7 +11,7 @@ weather_dict = json.loads(open('weather_processed.json','r').read())
 region_dict = {}
 
 offset = 0
-limit = '1'
+limit = '100'
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
 # output = open('trips_processed.json', 'a+')
 
@@ -29,15 +26,6 @@ def distance(lat1, lon1, lat2, lon2):
 	a = 0.5 - cos((lat2 - lat1) * p)/2 + cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2
 	return (12742 * asin(sqrt(a)))
 
-def get_center(clusters):
-	min = 1138
-	index = 0
-	for each in clusters:
-		if min > distance(clusters['radius']):
-			min = clusters['radius']
-			index = clusters['index']
-	return index
-
 # take a trip and 
 # 1. get pick_up/drop_off geo-locations
 # 	 get time of trip, passenger #, 
@@ -51,49 +39,57 @@ def parse_trip(trip):
 	pick_up_coord = {'lat':trip['pickup_latitude'], 'log': trip['pickup_longitude']}
 	drop_off_coord = {'lat':trip['dropoff_latitude'], 'log': trip['dropoff_longitude']}
 	passenger = trip['passenger_count']
+	p = 0.017453292519943295
 	lowerlat = float(trip['pickup_latitude']) - 1 / 110.574
 	upperlat = float(trip['pickup_latitude']) + 1 / 110.574
-	lowerlog = float(trip['pickup_longitude']) - 1 / (111.320 * cos(float(trip['pickup_latitude'])))
-	upperlog = float(trip['pickup_longitude']) + 1 / (111.320 * cos(float(trip['pickup_latitude'])))
+	lowerlog = float(trip['pickup_longitude']) - 1 / (111.320 * cos(p*float(trip['pickup_latitude'])))
+	upperlog = float(trip['pickup_longitude']) + 1 / (111.320 * cos(p*float(trip['pickup_latitude'])))
 
 	## get the time component
 	# process pick_up_time in the corresponding format to search weather
 	time_arr = (pick_up_time.split("T")[0]).split('-')
 	year = time_arr[0]
 	month = time_arr[1]
+	if month[0] == '0':
+		month = month[1]
 	date = time_arr[2]
+	if date[0] == '0':
+		date = date[1]
 
 	# get weekday
 	dateObj = datetime.datetime(int(year),int(month), int(date))
 	weekday = dateObj.weekday()
 
 	### get the weather info of the trip (temp, condition)
-	weather_info = get_weather_info(year, month, date)
+	weather_info = get_weather_info(pick_up_time, year, month, date)
 	temp = weather_info[0]
 	condition = weather_info[1]
 	
 	### get the cluster region info of the trip (region)
-
 	with open('Clusters.json','r') as input:
 		clusters = json.load(input)
-	if get_center(clusters) == 0:
+		for each in clusters:
+			if float(str(each['coordinates'][0])) < lowerlog or float(str(each['coordinates'][0])) > upperlog or float(str(each['coordinates'][1])) < lowerlat or float(str(each['coordinates'][1])) > upperlat:
+				#print each['coordinates'][0]
+				clusters.remove(each)
+	if get_region_info(pick_up_coord, clusters) == 0:
 		return
 	
 	# encapsulation
 	trip = {
 				'pick_up_time': pick_up_time,
-				'weekday': weekday,
+				'weekday': (weekday + 1),
 				'pick_up_coord': pick_up_coord, 
 				'drop_off_coord': drop_off_coord,
 				'passenger_count': passenger,
 				'temp': temp,
 				'condition': condition,
-				'region_id': get_center(clusters)
+				'region_id': get_region_info(pick_up_coord, clusters)
 			}
 	return trip
 
 ##### AUXULIARY FUNCTIONS
-def get_weather_info(year, month, date):
+def get_weather_info(pick_up_time, year, month, date):
 	# the key for searching weather in weather dict
 	year_search_key = year + '/' + month + '/' + date
 	hour_search_point = (pick_up_time.split("T")[1]).split(':')[0]
@@ -106,12 +102,21 @@ def get_weather_info(year, month, date):
 	condition = weather_dict[year_search_key][hour_search_point]['condition']
 	return [temp, condition]
 
-# def get_region_info(coord):
+def get_region_info(coord,clusters):
+	min = 1138
+	index = 0
+	for each in clusters:
+		dist = distance(float(str(each['coordinates'][1])), float(str(each['coordinates'][0])), float(str(coord['lat'])), float(str(coord['log'])))	
+		if min > dist:
+			min = dist
+			index = each['index']
+	return index
 
 # def get_distance(log_1, lat_1, log_2, lat_2):
 
 
 for trip in query_trip(link):
+	#print trip
 	print parse_trip(trip)
 
 
