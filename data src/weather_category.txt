@@ -1,0 +1,9 @@
+{u'ScatteredClouds': 761, u'LightFreezingRain': 15, u'MostlyCloudy': 1316, u'HeavyRain': 64, u'PartlyCloudy': 866, u'LightRain': 636, u'Clear': 8848, u'Overcast': 3980, u'Haze': 392, u'Rain': 153, u'Snow': 52, u'Quitecool': 32, u'Chilly': 91, u'Mild': 2, u'Fog': 17, u'LightSnow': 162, u'Frigid': 12, u'Cold': 84, u'Mist': 3, u'HeavySnow': 15, u'Cool': 19}
+
+
+1(normal): ScatteredClouds, MostlyCloudy, PartlyCloudy, Clear, Overcast, Haze, Mild, Quitecool, Chilly, Frigid, Cold, cool
+2(heavy_rain): Rain, HeavyRain
+3(light_rain): LightFreezingRain, LightRain
+4(heavy_snow): HeavySnow, Snow
+5(light_snow): LightSnow
+
