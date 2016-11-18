@@ -1,5 +1,7 @@
 import urllib2
 import json
+from math import cos,asin,sqrt
+
 
 # load popular cluster dictionary
 weather_dict = json.loads(open('weather_processed.json','r').read())
@@ -17,6 +19,20 @@ def query_trip(link):
 	response = urllib2.urlopen(link)
 	return json.loads(response.read())
 
+def distance(lat1, lon1, lat2, lon2):
+	p = 0.017453292519943295
+	a = 0.5 - cos((lat2 - lat1) * p)/2 + cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2
+	return (12742 * asin(sqrt(a)))
+
+def get_center(clusters):
+	min = 1138
+	index = 0
+	for each in clusters:
+		if min > distance(clusters['radius']):
+			min = clusters['radius']
+			index = clusters['index']
+	return index
+
 # take a trip and 
 # 1. get pick_up/drop_off geo-locations
 # 	 get time of trip, passenger #, 
@@ -30,6 +46,10 @@ def parse_trip(trip):
 	pick_up_coord = {'lat':trip['pickup_latitude'], 'log': trip['pickup_longitude']}
 	drop_off_coord = {'lat':trip['dropoff_latitude'], 'log': trip['dropoff_longitude']}
 	passenger = trip['passenger_count']
+	lowerlat = float(trip['pickup_latitude']) - 1 / 110.574
+	upperlat = float(trip['pickup_latitude']) + 1 / 110.574
+	lowerlog = float(trip['pickup_longitude']) - 1 / (111.320 * cos(float(trip['pickup_latitude'])))
+	upperlog = float(trip['pickup_longitude']) + 1 / (111.320 * cos(float(trip['pickup_latitude'])))
 
 	### get the weather info of the trip (temp, condition)
 	temp = get_weather_info(pick_up_time)[0]
@@ -37,6 +57,11 @@ def parse_trip(trip):
 	
 	### get the cluster region info of the trip (region)
 
+	with open('Clusters.json','r') as input:
+		clusters = json.load(input)
+	if get_center(clusters) == 0:
+		return
+	
 	# encapsulation
 	trip = {
 				'pick_up_time': pick_up_time, 
@@ -45,7 +70,7 @@ def parse_trip(trip):
 				'passenger_count': passenger,
 				'temp': temp,
 				'condition': condition,
-				'region_id': ""
+				'region_id': get_center(clusters)
 			}
 	return trip
 
@@ -75,7 +100,7 @@ def get_weather_info(time):
 # def get_distance(log_1, lat_1, log_2, lat_2):
 
 
-# for trip in query_trip(link):
-print query_trip(link) #parse_trip(trip)
+for trip in query_trip(link):
+	print parse_trip(trip)
 
 
