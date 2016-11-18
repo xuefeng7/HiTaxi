@@ -1,7 +1,12 @@
 import urllib2
 import json
+<<<<<<< HEAD
 from math import cos,asin,sqrt
 
+=======
+import datetime
+import calendar
+>>>>>>> origin/master
 
 # load popular cluster dictionary
 weather_dict = json.loads(open('weather_processed.json','r').read())
@@ -51,9 +56,21 @@ def parse_trip(trip):
 	lowerlog = float(trip['pickup_longitude']) - 1 / (111.320 * cos(float(trip['pickup_latitude'])))
 	upperlog = float(trip['pickup_longitude']) + 1 / (111.320 * cos(float(trip['pickup_latitude'])))
 
+	## get the time component
+	# process pick_up_time in the corresponding format to search weather
+	time_arr = (pick_up_time.split("T")[0]).split('-')
+	year = time_arr[0]
+	month = time_arr[1]
+	date = time_arr[2]
+
+	# get weekday
+	dateObj = datetime.datetime(int(year),int(month), int(date))
+	weekday = dateObj.weekday()
+
 	### get the weather info of the trip (temp, condition)
-	temp = get_weather_info(pick_up_time)[0]
-	condition = get_weather_info(pick_up_time)[1]
+	weather_info = get_weather_info(year, month, date)
+	temp = weather_info[0]
+	condition = weather_info[1]
 	
 	### get the cluster region info of the trip (region)
 
@@ -64,7 +81,8 @@ def parse_trip(trip):
 	
 	# encapsulation
 	trip = {
-				'pick_up_time': pick_up_time, 
+				'pick_up_time': pick_up_time,
+				'weekday': weekday,
 				'pick_up_coord': pick_up_coord, 
 				'drop_off_coord': drop_off_coord,
 				'passenger_count': passenger,
@@ -75,14 +93,7 @@ def parse_trip(trip):
 	return trip
 
 ##### AUXULIARY FUNCTIONS
-def get_weather_info(time):
-	# process pick_up_time in the corresponding format to search weather
-	time_arr = (pick_up_time.split("T")[0]).split('-')
-	year = time_arr[0]
-	month = time_arr[1]
-	if month[0] == "0":
-		month = month[1]
-	date = time_arr[2]
+def get_weather_info(year, month, date):
 	# the key for searching weather in weather dict
 	year_search_key = year + '/' + month + '/' + date
 	hour_search_point = (pick_up_time.split("T")[1]).split(':')[0]
@@ -102,5 +113,6 @@ def get_weather_info(time):
 
 for trip in query_trip(link):
 	print parse_trip(trip)
+
 
 
