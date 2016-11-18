@@ -7,13 +7,11 @@ import calendar
 
 # load popular cluster dictionary
 weather_dict = json.loads(open('weather_processed.json','r').read())
-# region dictionary
-region_dict = {}
 
 offset = 0
 limit = '100'
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
-# output = open('trips_processed.json', 'a+')
+output = open('processed_trips.json', 'a+')
 
 ##### MAIN FUNCTIONS
 
@@ -80,16 +78,16 @@ def parse_trip(trip):
 def get_region_info(trip, coord):
 	# get trip coordinate bound
 	p = 0.017453292519943295
-	lowerlat = float(trip['pickup_latitude']) - 1 / 110.574
-	upperlat = float(trip['pickup_latitude']) + 1 / 110.574
-	lowerlog = float(trip['pickup_longitude']) - 1 / (111.320 * cos(p*float(trip['pickup_latitude'])))
-	upperlog = float(trip['pickup_longitude']) + 1 / (111.320 * cos(p*float(trip['pickup_latitude'])))
+	lower_lat = float(trip['pickup_latitude']) - 1 / 110.574
+	upper_lat = float(trip['pickup_latitude']) + 1 / 110.574
+	lower_log = float(trip['pickup_longitude']) - 1 / (111.320 * cos(p*float(trip['pickup_latitude'])))
+	upper_log = float(trip['pickup_longitude']) + 1 / (111.320 * cos(p*float(trip['pickup_latitude'])))
 	
 	# search for the nearest region
 	with open('Clusters.json','r') as input:
 		clusters = json.load(input)
 		for each in clusters:
-			if float(str(each['coordinates'][0])) < lowerlog or float(str(each['coordinates'][0])) > upperlog or float(str(each['coordinates'][1])) < lowerlat or float(str(each['coordinates'][1])) > upperlat:
+			if float(str(each['coordinates'][0])) < lower_log or float(str(each['coordinates'][0])) > upper_log or float(str(each['coordinates'][1])) < lower_lat or float(str(each['coordinates'][1])) > upper_lat:
 				#print each['coordinates'][0]
 				clusters.remove(each)
 
@@ -115,14 +113,27 @@ def get_weather_info(pick_up_time, year, month, date):
 	condition = weather_dict[year_search_key][hour_search_point]['condition']
 	return [temp, condition]
 
-
 # given two coordinate, comput their distance
 def distance(lat1, lon1, lat2, lon2):
 	p = 0.017453292519943295
 	a = 0.5 - cos((lat2 - lat1) * p)/2 + cos(lat1 * p) * cos(lat2 * p) * (1 - cos((lon2 - lon1) * p)) / 2
 	return (12742 * asin(sqrt(a)))
 
+offset_upper_bound = 1651
+processed_trip_count = 0
+skip = 0
+while offset < offset_upper_bound:
+	for trip in query_trip(link):
+		processed_trip_count += 1
+		if processed_trip_count > skip:
+			print "processing trip." + str(processed_trip_count) + "at page." + str(offset)
+			try:
+				if parse_trip(trip) is not None:
+				# dump to json output
+				trip_obj = parse_trip(trip)
+				json.dumps(trip_obj, output)
+			except Exception as e:
+				# write error message and trip index to error file
+				continue
 
-for trip in query_trip(link):
-	#print trip
-	print parse_trip(trip)
+print "trip processing is completed"
