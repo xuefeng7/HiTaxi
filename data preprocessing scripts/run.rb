@@ -15,12 +15,15 @@ class Launcher
 
 end
 
-
+# offset lists
+offset = [8, 308, 608, 908, 1208, 1508]
+# skip lists
+skip = [0, 14242, 8232, 0, 2970]
 # create command lines
 command_list = []
 
-for index in 0..11
-	command_list << "ruby trip_processing.py #{index}"
+for index in 0..5
+	command_list << "python trip_processing.py #{index} #{offset[index]} #{skip[index]}"
 end 
 
 launcher = Launcher.new(command_list)

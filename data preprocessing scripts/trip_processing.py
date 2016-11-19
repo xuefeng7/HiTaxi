@@ -1,3 +1,4 @@
+# how to run: python trip_processing.py {index} {offset} {skip}
 import urllib2
 import json
 from math import cos,asin,sqrt
@@ -7,7 +8,15 @@ import logging
 import time
 import sys
 
-logging.basicConfig(filename = "debug/debug_"+sys.argv[1]+".log", level = logging.DEBUG)
+# check if the mandatory index is provided
+try:
+	sys.argv[1]
+except:
+	print "please specify the file index to continue."
+	print "the program is terminating."
+	sys.exit(0)
+
+logging.basicConfig(filename = "debug/debug_" + sys.argv[1] + ".log", level = logging.DEBUG)
 # load popular cluster dictionary
 region_dict = json.loads(open('Clusters.json','r').read())
 # load region 
@@ -24,7 +33,7 @@ condition_dict = {
 }
 
 offset = 300 * int(sys.argv[1])
-limit = '50000'
+limit = '500'
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
 output = open('processed_trip/processed_trips_' + sys.argv[1] + '.txt', 'a+')
 
@@ -80,7 +89,7 @@ def parse_trip(trip):
 	### get the weather info of the trip (temp, condition)
 	weather_info = get_weather_info(pick_up_time, year, month, date, hour)
 	temp = weather_info[0]
-	condition = get_condition_label(weather_info[1])
+	condition = get_condition_label(weather_info[1]) + "(" + weather_info[1] + ")"
 	
 	# encapsulation
 	trip = {
@@ -147,13 +156,23 @@ def distance(lat1, lon1, lat2, lon2):
 
 ##### MAIN QUERY LOOPS
 
-
 offset_upper_bound = 300 * (int(sys.argv[1]) + 1) - 1
 cp_processed_trip_count = 0 # current page processed count
-skip = 0
+skip_trip = 0
 
-while offset < offset_upper_bound :
-	
+try:
+	# starting page reset
+	if sys.argv[2] is not None:
+		offset = int(sys.argv[2])
+	# starting trip # reset
+	if sys.argv[3] is not None:
+		skip_trip = int(sys.argv[3])
+except:
+	# using default value
+	pass 
+
+
+while offset < offset_upper_bound:
 	# start_time = time.time()
 	try:
 		trips = query_trip(link)
@@ -161,7 +180,8 @@ while offset < offset_upper_bound :
 		#start_time = time.time()
 		for trip in trips:
 			cp_processed_trip_count += 1
-			if cp_processed_trip_count > skip:
+			if cp_processed_trip_count > skip_trip:
+				print "processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset)
 				logging.debug("processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset))
 				#print trip
 				#print parse_trip(trip)
