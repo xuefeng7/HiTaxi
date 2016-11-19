@@ -5,8 +5,9 @@ import datetime
 import calendar
 import logging
 import time
+import sys
 
-logging.basicConfig(filename = "debug.log", level = logging.DEBUG)
+logging.basicConfig(filename = "debug/debug_"+sys.argv[1]+".log", level = logging.DEBUG)
 # load popular cluster dictionary
 region_dict = json.loads(open('Clusters.json','r').read())
 # load region 
@@ -22,10 +23,10 @@ condition_dict = {
 	"fog": ['Fog', 'Mist'],
 }
 
-offset = 0
-limit = '100'
+offset = 300 * int(sys.argv[1])
+limit = '50000'
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
-output = open('processed_trips.txt', 'a+')
+output = open('processed_trip/processed_trips_' + sys.argv[1] + '.txt', 'a+')
 
 ##### MAIN FUNCTIONS
 
@@ -49,9 +50,9 @@ def parse_trip(trip):
 	passenger = trip['passenger_count']
 
 	### get the cluster region info of the trip (region)
-	start_time = time.time()
+	# start_time = time.time()
 	region_id = get_region_info(trip, pick_up_coord)
-	print "get region_id costs " + str(time.time() - start_time) + " s"
+	# print "get region_id costs " + str(time.time() - start_time) + " s"
 	if region_id == 0:
 		# trip far fram all popular regions, ignore it
 		return
@@ -146,35 +147,42 @@ def distance(lat1, lon1, lat2, lon2):
 
 ##### MAIN QUERY LOOPS
 
-offset_upper_bound = 1
+
+offset_upper_bound = 300 * (int(sys.argv[1]) + 1) - 1
 cp_processed_trip_count = 0 # current page processed count
 skip = 0
 
-while offset < offset_upper_bound:
+while offset < offset_upper_bound :
 	
-	start_time = time.time()
-	trips = query_trip(link)
-	print "query costs " + str(time.time() - start_time) + " s"
+	# start_time = time.time()
+	try:
+		trips = query_trip(link)
+		# print "file " + sys.argv[1] +": " + "query costs " + str(time.time() - start_time) + " s"
+		#start_time = time.time()
+		for trip in trips:
+			cp_processed_trip_count += 1
+			if cp_processed_trip_count > skip:
+				logging.debug("processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset))
+				#print trip
+				#print parse_trip(trip)
+				try:
+					if parse_trip(trip) is not None:
+						# dump to json output
+						trip_obj = parse_trip(trip)
+						output.write(json.dumps(trip_obj) + '\n')
+				except Exception as e:
+					# write error message and trip index to error file
+					errMsg = "processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset) + ' failed: ' + str(e)
+					logging.debug(errMsg)
+					pass
+		# print "file " + sys.argv[1] +": " + "process costs " + str(time.time() - start_time) + "s"
+		offset += 1
+		cp_processed_trip_count = 0
+	except Exception as e:
+		# write error message and trip index to error file
+		errMsg = "file " + sys.argv[1] +": " + "Query Page no." + str(offset) + ' failed: ' + str(e)
+		logging.debug(errMsg)
+		pass
 
-	start_time = time.time()
-	for trip in trips:
-		cp_processed_trip_count += 1
-		if cp_processed_trip_count > skip:
-			#print "processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset)
-			#print trip
-			#print parse_trip(trip)
-			try:
-				if parse_trip(trip) is not None:
-					# dump to json output
-					trip_obj = parse_trip(trip)
-					output.write(json.dumps(trip_obj) + '\n')
-			except Exception as e:
-				# write error message and trip index to error file
-				errMsg = "processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset) + ' failed: ' + str(e)
-				logging.debug(errMsg)
-				pass
-	print "process costs " + str(time.time() - start_time) + "s"
-	offset += 1
-	cp_processed_trip_count = 0
 
-print "trip processing is completed"
+logging.debug("file " + sys.argv[1] + ": " + "trip processing is completed")

@@ -7,7 +7,6 @@ import logging
 import time
 import sys
 
-
 logging.basicConfig(filename = "debug/debug_"+sys.argv[1]+".log", level = logging.DEBUG)
 # load popular cluster dictionary
 region_dict = json.loads(open('Clusters.json','r').read())
@@ -27,7 +26,7 @@ condition_dict = {
 offset = 300 * int(sys.argv[1])
 limit = '50000'
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
-output = open('processed_trip/processed_trips_'+sys.argv[1]+'.txt', 'a+')
+output = open('processed_trip/processed_trips_' + sys.argv[1] + '.txt', 'a+')
 
 ##### MAIN FUNCTIONS
 
@@ -155,16 +154,15 @@ skip = 0
 
 while offset < offset_upper_bound :
 	
-	start_time = time.time()
+	# start_time = time.time()
 	try:
 		trips = query_trip(link)
-		print "file " + sys.argv[1] +": " + "query costs " + str(time.time() - start_time) + " s"
-
-		start_time = time.time()
+		# print "file " + sys.argv[1] +": " + "query costs " + str(time.time() - start_time) + " s"
+		#start_time = time.time()
 		for trip in trips:
 			cp_processed_trip_count += 1
 			if cp_processed_trip_count > skip:
-				#print "processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset)
+				logging.debug("processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset))
 				#print trip
 				#print parse_trip(trip)
 				try:
@@ -177,7 +175,7 @@ while offset < offset_upper_bound :
 					errMsg = "processing trip no." + str(cp_processed_trip_count) + " at page." + str(offset) + ' failed: ' + str(e)
 					logging.debug(errMsg)
 					pass
-		print "file " + sys.argv[1] +": " + "process costs " + str(time.time() - start_time) + "s"
+		# print "file " + sys.argv[1] +": " + "process costs " + str(time.time() - start_time) + "s"
 		offset += 1
 		cp_processed_trip_count = 0
 	except Exception as e:
@@ -187,4 +185,4 @@ while offset < offset_upper_bound :
 		pass
 
 
-print "file " + sys.argv[1] + ": " + "trip processing is completed"
+logging.debug("file " + sys.argv[1] + ": " + "trip processing is completed")

@@ -19,7 +19,7 @@ end
 # create command lines
 command_list = []
 
-for index in 0..11
+for index in 0..10
 	command_list << "python trip_processing.py #{index}"
 end 
 
