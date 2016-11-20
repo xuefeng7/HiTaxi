@@ -33,7 +33,7 @@ condition_dict = {
 }
 
 offset = 300 * int(sys.argv[1])
-limit = '500'
+limit = str(int(sys.argv[3])-1)
 link = 'https://data.cityofnewyork.us/resource/gkne-dk5s.json?$limit='+ limit +'&$offset=' + str(offset)
 output = open('processed_trip/processed_trips_' + sys.argv[1] + '.txt', 'a+')
 
@@ -165,8 +165,8 @@ try:
 	if sys.argv[2] is not None:
 		offset = int(sys.argv[2])
 	# starting trip # reset
-	if sys.argv[3] is not None:
-		skip_trip = int(sys.argv[3])
+	# if sys.argv[3] is not None:
+	# 	skip_trip = int(sys.argv[3])
 except:
 	# using default value
 	pass 
@@ -197,12 +197,12 @@ while offset < offset_upper_bound:
 					pass
 		# print "file " + sys.argv[1] +": " + "process costs " + str(time.time() - start_time) + "s"
 		offset += 1
+		skip_trip = 0
 		cp_processed_trip_count = 0
 	except Exception as e:
 		# write error message and trip index to error file
 		errMsg = "file " + sys.argv[1] +": " + "Query Page no." + str(offset) + ' failed: ' + str(e)
 		logging.debug(errMsg)
 		pass
-
 
 logging.debug("file " + sys.argv[1] + ": " + "trip processing is completed")
