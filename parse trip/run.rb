@@ -18,7 +18,7 @@ end
 # offset lists
 offset = [8, 308, 608, 908, 1208, 1508]
 # skip lists
-skip = [0, 14242, 8232, 0, 2970]
+skip = [0, 14242, 8232, 0, 0, 2970]
 # create command lines
 command_list = []
 
