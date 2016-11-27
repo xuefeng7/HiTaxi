@@ -8,7 +8,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-
+import time
 # CONSTANT
 FEATURE_SIZE = 6
 TRAIN_SIZE = 3029912
@@ -52,6 +52,7 @@ train_feature_matrix, train_truth_vector = read_obser_set('trainset_2014.txt', T
 def network_model():
 	model = Sequential()
 	model.add(Dense(FEATURE_SIZE, input_dim=FEATURE_SIZE, init='normal', activation='relu'))
+	model.add(Dense(FEATURE_SIZE/2, init='normal', activation='relu'))
 	model.add(Dense(1, init='normal'))
 	# Compile model
 	model.compile(loss='mean_squared_error', optimizer='adam')
@@ -65,11 +66,16 @@ def evaluate(estimator, x, y, k):
 
 
 # fix random seed for reproducibility
+print "training estimator..."
 seed = 7
-np.random.seed(seed)
+estimators = []
+estimators.append(('standardize', StandardScaler()))
+estimators.append(('mlp', KerasRegressor(build_fn=baseline_model, nb_epoch=100, batch_size=10, verbose=0)))
+pipeline = Pipeline(estimators)
 # evaluate model with standardized dataset
 # larger batch size requires larger memory space, but will improve the model
-print "training estimator..."
-estimator = KerasRegressor(build_fn=network_model, nb_epoch=100, batch_size=5, verbose=0)
+# estimator = KerasRegressor(build_fn=network_model, nb_epoch=100, batch_size=5, verbose=0)
 print "evaluating estimator..."
-evaluate(estimator, train_feature_matrix, train_truth_vector, 5)
+start_time = time.time()
+evaluate(pipeline, train_feature_matrix, train_truth_vector, 5)
+print "evaluting costs " + str(time.time() - start_time) + "s"
