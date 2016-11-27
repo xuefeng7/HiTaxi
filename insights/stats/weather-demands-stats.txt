@@ -1,0 +1,447 @@
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.0105130615608
+10: ttest_ind for e-n:            t = 0.641263  p = 0.522867
+9: ttest_ind for e-n:            t = 0.239257  p = 0.811447
+8: ttest_ind for e-n:            t = 1.02215  p = 0.309573
+7: ttest_ind for e-n:            t = 0.935065  p = 0.352064
+6: ttest_ind for e-n:            t = 0.764816  p = 0.446405
+5: ttest_ind for e-n:            t = -0.240171  p = 0.810724
+4: ttest_ind for e-n:            t = 3.17481  p = 0.00227515
+3: ttest_ind for e-n:            t = 0.516479  p = 0.606896
+2: ttest_ind for e-n:            t = -0.069589  p = 0.944664
+1: ttest_ind for e-n:            t = -0.327216  p = 0.744218
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+Traceback (most recent call last):
+  File "split_weather.py", line 114, in <module>
+    nonextreme[nonextreme_count] = count
+IndexError: index 2756236 is out of bounds for axis 0 with size 2756236
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.00492194201196
+10: ttest_ind for e-n:            t = -1.8235  p = 0.0717224
+9: ttest_ind for e-n:            t = 1.84364  p = 0.069064
+8: ttest_ind for e-n:            t = -1.73181  p = 0.0870398
+7: ttest_ind for e-n:            t = -0.701973  p = 0.484446
+6: ttest_ind for e-n:            t = 0.560637  p = 0.576326
+5: ttest_ind for e-n:            t = -0.513462  p = 0.608785
+4: ttest_ind for e-n:            t = 0.995781  p = 0.321823
+3: ttest_ind for e-n:            t = -0.36811  p = 0.713629
+2: ttest_ind for e-n:            t = -0.381663  p = 0.70354
+1: ttest_ind for e-n:            t = 0.576115  p = 0.565997
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+[  11.    3.    4.  248.    4.    2.   61.    1.    7.  187.  168.  188.
+    3.  103.   31.  111.   85.   18.  150.   96.   28.   36.  140.    3.
+  262.    5.   59.    6.   21.    6.   62.   28.   56.   15.   48.  281.
+   36.   54.  311.   64.   70.    3.    4.   27.   19.   11.  207.    1.
+   94.    2.]
+extreme - nonextreme: 0.00492194201196
+10: ttest_ind for e-n:            t = -0.511187  p = 0.610399
+9: ttest_ind for e-n:            t = -0.603348  p = 0.547705
+8: ttest_ind for e-n:            t = 2.01637  p = 0.0470679
+7: ttest_ind for e-n:            t = -0.731396  p = 0.466476
+6: ttest_ind for e-n:            t = 2.32621  p = 0.0227159
+5: ttest_ind for e-n:            t = -0.119903  p = 0.904806
+4: ttest_ind for e-n:            t = -0.688369  p = 0.492852
+3: ttest_ind for e-n:            t = -0.00339614  p = 0.997297
+2: ttest_ind for e-n:            t = 0.80231  p = 0.424366
+1: ttest_ind for e-n:            t = -1.50409  p = 0.136062
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.00492194201196
+100: ttest_ind for e-n:            t = 1.88813  p = 0.0618879
+99: ttest_ind for e-n:            t = 0.602534  p = 0.548118
+98: ttest_ind for e-n:            t = -0.471438  p = 0.638213
+97: ttest_ind for e-n:            t = -0.219041  p = 0.827005
+96: ttest_ind for e-n:            t = 1.71567  p = 0.0891609
+95: ttest_ind for e-n:            t = 0.283813  p = 0.777051
+94: ttest_ind for e-n:            t = -1.48878  p = 0.139587
+93: ttest_ind for e-n:            t = -0.165938  p = 0.868494
+92: ttest_ind for e-n:            t = 0.977736  p = 0.330205
+91: ttest_ind for e-n:            t = -0.383363  p = 0.702152
+90: ttest_ind for e-n:            t = -0.199089  p = 0.842543
+89: ttest_ind for e-n:            t = -1.29687  p = 0.19726
+88: ttest_ind for e-n:            t = 1.20739  p = 0.229719
+87: ttest_ind for e-n:            t = -0.633074  p = 0.527913
+86: ttest_ind for e-n:            t = -0.151198  p = 0.88009
+85: ttest_ind for e-n:            t = -1.02167  p = 0.309597
+84: ttest_ind for e-n:            t = -0.283164  p = 0.777559
+83: ttest_ind for e-n:            t = 1.76044  p = 0.0809789
+82: ttest_ind for e-n:            t = -0.403627  p = 0.687223
+81: ttest_ind for e-n:            t = -1.5638  p = 0.120558
+80: ttest_ind for e-n:            t = -0.124592  p = 0.901066
+79: ttest_ind for e-n:            t = 1.56109  p = 0.121306
+78: ttest_ind for e-n:            t = 0.446851  p = 0.655826
+77: ttest_ind for e-n:            t = -1.00389  p = 0.317682
+76: ttest_ind for e-n:            t = 0.518654  p = 0.604982
+75: ttest_ind for e-n:            t = -0.2049  p = 0.838004
+74: ttest_ind for e-n:            t = 1.87738  p = 0.0632641
+73: ttest_ind for e-n:            t = -2.02459  p = 0.0454534
+72: ttest_ind for e-n:            t = -0.289653  p = 0.772598
+71: ttest_ind for e-n:            t = -0.729562  p = 0.467157
+70: ttest_ind for e-n:            t = -0.32023  p = 0.749365
+69: ttest_ind for e-n:            t = 0.358333  p = 0.720767
+68: ttest_ind for e-n:            t = 0.1978  p = 0.843542
+67: ttest_ind for e-n:            t = 1.95413  p = 0.0531714
+66: ttest_ind for e-n:            t = 0.157784  p = 0.874897
+65: ttest_ind for e-n:            t = -0.118735  p = 0.905687
+64: ttest_ind for e-n:            t = 0.383577  p = 0.702021
+63: ttest_ind for e-n:            t = 0.32948  p = 0.742385
+62: ttest_ind for e-n:            t = -1.22542  p = 0.223054
+61: ttest_ind for e-n:            t = 0.546708  p = 0.585671
+60: ttest_ind for e-n:            t = -1.24611  p = 0.215388
+59: ttest_ind for e-n:            t = 0.631323  p = 0.529065
+58: ttest_ind for e-n:            t = 0.457357  p = 0.648368
+57: ttest_ind for e-n:            t = 0.165496  p = 0.868845
+56: ttest_ind for e-n:            t = 0.340032  p = 0.734437
+55: ttest_ind for e-n:            t = -0.307716  p = 0.758846
+54: ttest_ind for e-n:            t = 0.706679  p = 0.481162
+53: ttest_ind for e-n:            t = -0.583088  p = 0.56095
+52: ttest_ind for e-n:            t = -0.828155  p = 0.409492
+51: ttest_ind for e-n:            t = -1.20527  p = 0.230599
+50: ttest_ind for e-n:            t = -1.5054  p = 0.134964
+49: ttest_ind for e-n:            t = -0.23302  p = 0.816202
+48: ttest_ind for e-n:            t = 0.7071  p = 0.480913
+47: ttest_ind for e-n:            t = 2.13408  p = 0.0349774
+46: ttest_ind for e-n:            t = 0.700135  p = 0.485289
+45: ttest_ind for e-n:            t = -1.05176  p = 0.295146
+44: ttest_ind for e-n:            t = -1.01316  p = 0.313249
+43: ttest_ind for e-n:            t = -0.289871  p = 0.772426
+42: ttest_ind for e-n:            t = 1.04377  p = 0.298742
+41: ttest_ind for e-n:            t = 0.848779  p = 0.397803
+40: ttest_ind for e-n:            t = 0.813215  p = 0.417805
+39: ttest_ind for e-n:            t = -2.2541  p = 0.0266025
+38: ttest_ind for e-n:            t = 0.515308  p = 0.607342
+37: ttest_ind for e-n:            t = 0.109473  p = 0.913014
+36: ttest_ind for e-n:            t = 0.838787  p = 0.403292
+35: ttest_ind for e-n:            t = -0.561387  p = 0.575859
+34: ttest_ind for e-n:            t = 0.287348  p = 0.774351
+33: ttest_ind for e-n:            t = 1.1773  p = 0.241527
+32: ttest_ind for e-n:            t = 0.205631  p = 0.837434
+31: ttest_ind for e-n:            t = -1.00627  p = 0.316349
+30: ttest_ind for e-n:            t = -0.824898  p = 0.411156
+29: ttest_ind for e-n:            t = -0.735612  p = 0.463427
+28: ttest_ind for e-n:            t = 0.287234  p = 0.774442
+27: ttest_ind for e-n:            t = -0.902658  p = 0.36887
+26: ttest_ind for e-n:            t = 0.139153  p = 0.889575
+25: ttest_ind for e-n:            t = 1.1711  p = 0.244183
+24: ttest_ind for e-n:            t = -0.827238  p = 0.409772
+23: ttest_ind for e-n:            t = 0.494852  p = 0.621628
+22: ttest_ind for e-n:            t = -1.2397  p = 0.217859
+21: ttest_ind for e-n:            t = -0.660363  p = 0.51034
+20: ttest_ind for e-n:            t = 0.780362  p = 0.43694
+19: ttest_ind for e-n:            t = -0.53914  p = 0.590807
+18: ttest_ind for e-n:            t = 0.88625  p = 0.377605
+17: ttest_ind for e-n:            t = 0.612476  p = 0.541515
+16: ttest_ind for e-n:            t = -0.76431  p = 0.446209
+15: ttest_ind for e-n:            t = -0.750014  p = 0.454747
+14: ttest_ind for e-n:            t = -0.64918  p = 0.517521
+13: ttest_ind for e-n:            t = 0.478675  p = 0.633245
+12: ttest_ind for e-n:            t = 0.0632003  p = 0.949715
+11: ttest_ind for e-n:            t = 1.39665  p = 0.165226
+10: ttest_ind for e-n:            t = 0.688692  p = 0.492384
+9: ttest_ind for e-n:            t = 0.285475  p = 0.775841
+8: ttest_ind for e-n:            t = -0.778114  p = 0.438326
+7: ttest_ind for e-n:            t = 0.491665  p = 0.623871
+6: ttest_ind for e-n:            t = 0.415317  p = 0.678713
+5: ttest_ind for e-n:            t = 0.613677  p = 0.540628
+4: ttest_ind for e-n:            t = -0.107879  p = 0.914277
+3: ttest_ind for e-n:            t = 0.490544  p = 0.624665
+2: ttest_ind for e-n:            t = -1.47634  p = 0.142534
+1: ttest_ind for e-n:            t = -0.472649  p = 0.637357
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.0132446529567
+100: ttest_ind for e-n:            t = -0.176133  p = 0.8605
+99: ttest_ind for e-n:            t = 1.02972  p = 0.305346
+98: ttest_ind for e-n:            t = -2.14358  p = 0.0347601
+97: ttest_ind for e-n:            t = -0.763805  p = 0.446759
+96: ttest_ind for e-n:            t = 0.662733  p = 0.508812
+95: ttest_ind for e-n:            t = 1.63709  p = 0.104665
+94: ttest_ind for e-n:            t = 0.22744  p = 0.820485
+93: ttest_ind for e-n:            t = -1.88885  p = 0.0613671
+92: ttest_ind for e-n:            t = 0.0147705  p = 0.988242
+91: ttest_ind for e-n:            t = -0.0746052  p = 0.940655
+90: ttest_ind for e-n:            t = -1.06752  p = 0.288503
+89: ttest_ind for e-n:            t = 0.604444  p = 0.546811
+88: ttest_ind for e-n:            t = -0.911226  p = 0.364096
+87: ttest_ind for e-n:            t = -0.912681  p = 0.363323
+86: ttest_ind for e-n:            t = 0.414693  p = 0.679167
+85: ttest_ind for e-n:            t = 0.238076  p = 0.812235
+84: ttest_ind for e-n:            t = 1.45173  p = 0.149281
+83: ttest_ind for e-n:            t = -1.30755  p = 0.193571
+82: ttest_ind for e-n:            t = 2.33587  p = 0.0216682
+81: ttest_ind for e-n:            t = 0.530045  p = 0.597083
+80: ttest_ind for e-n:            t = 1.68464  p = 0.0955431
+79: ttest_ind for e-n:            t = 0.747643  p = 0.456172
+78: ttest_ind for e-n:            t = -0.148907  p = 0.88189
+77: ttest_ind for e-n:            t = -0.061251  p = 0.951263
+76: ttest_ind for e-n:            t = -1.37476  p = 0.171909
+75: ttest_ind for e-n:            t = 1.11677  p = 0.266533
+74: ttest_ind for e-n:            t = 0.607158  p = 0.544923
+73: ttest_ind for e-n:            t = 1.23578  p = 0.219483
+72: ttest_ind for e-n:            t = 0.18692  p = 0.852049
+71: ttest_ind for e-n:            t = 0.0923264  p = 0.926598
+70: ttest_ind for e-n:            t = 1.23641  p = 0.218833
+69: ttest_ind for e-n:            t = 1.36018  p = 0.176965
+68: ttest_ind for e-n:            t = -0.405501  p = 0.685845
+67: ttest_ind for e-n:            t = 1.27978  p = 0.20315
+66: ttest_ind for e-n:            t = -0.935946  p = 0.351591
+65: ttest_ind for e-n:            t = -0.215417  p = 0.829819
+64: ttest_ind for e-n:            t = -0.403166  p = 0.687576
+63: ttest_ind for e-n:            t = 0.88456  p = 0.378294
+62: ttest_ind for e-n:            t = -2.74833  p = 0.00713777
+61: ttest_ind for e-n:            t = -0.150622  p = 0.880531
+60: ttest_ind for e-n:            t = -0.750717  p = 0.454366
+59: ttest_ind for e-n:            t = 0.419397  p = 0.675701
+58: ttest_ind for e-n:            t = 0.0609174  p = 0.951529
+57: ttest_ind for e-n:            t = -0.412382  p = 0.680911
+56: ttest_ind for e-n:            t = -0.720804  p = 0.472678
+55: ttest_ind for e-n:            t = 0.0258521  p = 0.97942
+54: ttest_ind for e-n:            t = 0.0417541  p = 0.966767
+53: ttest_ind for e-n:            t = -0.756655  p = 0.450904
+52: ttest_ind for e-n:            t = -0.472672  p = 0.637339
+51: ttest_ind for e-n:            t = -0.335444  p = 0.737993
+50: ttest_ind for e-n:            t = 1.00965  p = 0.315138
+49: ttest_ind for e-n:            t = 1.7512  p = 0.0828961
+48: ttest_ind for e-n:            t = 1.84516  p = 0.0679628
+47: ttest_ind for e-n:            t = -0.388995  p = 0.697989
+46: ttest_ind for e-n:            t = 0.513926  p = 0.608272
+45: ttest_ind for e-n:            t = 0.463481  p = 0.643883
+44: ttest_ind for e-n:            t = -1.58899  p = 0.114974
+43: ttest_ind for e-n:            t = 0.604219  p = 0.546913
+42: ttest_ind for e-n:            t = 0.0123545  p = 0.990164
+41: ttest_ind for e-n:            t = 0.903351  p = 0.368182
+40: ttest_ind for e-n:            t = 1.33621  p = 0.184343
+39: ttest_ind for e-n:            t = 0.198815  p = 0.842759
+38: ttest_ind for e-n:            t = -0.718032  p = 0.474158
+37: ttest_ind for e-n:            t = -1.63115  p = 0.105749
+36: ttest_ind for e-n:            t = 0.308778  p = 0.758074
+35: ttest_ind for e-n:            t = 0.064066  p = 0.949027
+34: ttest_ind for e-n:            t = -0.326932  p = 0.744311
+33: ttest_ind for e-n:            t = 1.54115  p = 0.12663
+32: ttest_ind for e-n:            t = 2.93981  p = 0.00410606
+31: ttest_ind for e-n:            t = 0.921617  p = 0.358664
+30: ttest_ind for e-n:            t = 0.0846929  p = 0.932649
+29: ttest_ind for e-n:            t = 0.297307  p = 0.76676
+28: ttest_ind for e-n:            t = -0.523272  p = 0.601803
+27: ttest_ind for e-n:            t = 0.368383  p = 0.713334
+26: ttest_ind for e-n:            t = -0.557151  p = 0.57848
+25: ttest_ind for e-n:            t = -0.138976  p = 0.889707
+24: ttest_ind for e-n:            t = -0.188307  p = 0.850965
+23: ttest_ind for e-n:            t = -0.967496  p = 0.335443
+22: ttest_ind for e-n:            t = -0.0389487  p = 0.968998
+21: ttest_ind for e-n:            t = 0.438675  p = 0.661934
+20: ttest_ind for e-n:            t = 0.000688931  p = 0.999451
+19: ttest_ind for e-n:            t = 0.338485  p = 0.735648
+18: ttest_ind for e-n:            t = 0.729578  p = 0.467135
+17: ttest_ind for e-n:            t = 0.0106049  p = 0.991558
+16: ttest_ind for e-n:            t = -1.18584  p = 0.238123
+15: ttest_ind for e-n:            t = 0.253363  p = 0.800434
+14: ttest_ind for e-n:            t = 1.24809  p = 0.214829
+13: ttest_ind for e-n:            t = 0.453921  p = 0.650837
+12: ttest_ind for e-n:            t = 0.405721  p = 0.685694
+11: ttest_ind for e-n:            t = -1.32983  p = 0.186597
+10: ttest_ind for e-n:            t = 0.289783  p = 0.772493
+9: ttest_ind for e-n:            t = -0.825398  p = 0.410965
+8: ttest_ind for e-n:            t = 0.454215  p = 0.650517
+7: ttest_ind for e-n:            t = -1.14667  p = 0.254078
+6: ttest_ind for e-n:            t = 1.0178  p = 0.311044
+5: ttest_ind for e-n:            t = 0.633949  p = 0.527467
+4: ttest_ind for e-n:            t = -1.08166  p = 0.281748
+3: ttest_ind for e-n:            t = 0.422963  p = 0.673096
+2: ttest_ind for e-n:            t = -0.151083  p = 0.880185
+1: ttest_ind for e-n:            t = 1.16469  p = 0.246495
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.00864045084725
+100: ttest_ind for e-n:            t = -0.697304  p = 0.487096
+99: ttest_ind for e-n:            t = -0.709605  p = 0.479478
+98: ttest_ind for e-n:            t = 0.307635  p = 0.758904
+97: ttest_ind for e-n:            t = 0.336474  p = 0.737123
+96: ttest_ind for e-n:            t = -0.487177  p = 0.627054
+95: ttest_ind for e-n:            t = 1.44954  p = 0.149897
+94: ttest_ind for e-n:            t = 0.301983  p = 0.763197
+93: ttest_ind for e-n:            t = -1.17491  p = 0.242777
+92: ttest_ind for e-n:            t = 1.49515  p = 0.137858
+91: ttest_ind for e-n:            t = 0.87001  p = 0.386122
+90: ttest_ind for e-n:            t = 0.726991  p = 0.468679
+89: ttest_ind for e-n:            t = 0.215409  p = 0.829854
+88: ttest_ind for e-n:            t = -0.204912  p = 0.838005
+87: ttest_ind for e-n:            t = -0.163068  p = 0.870759
+86: ttest_ind for e-n:            t = -0.138513  p = 0.890074
+85: ttest_ind for e-n:            t = -0.160439  p = 0.872829
+84: ttest_ind for e-n:            t = -1.0362  p = 0.302408
+83: ttest_ind for e-n:            t = 1.05744  p = 0.292583
+82: ttest_ind for e-n:            t = -1.11466  p = 0.267362
+81: ttest_ind for e-n:            t = 0.183231  p = 0.854937
+80: ttest_ind for e-n:            t = 1.27448  p = 0.205187
+79: ttest_ind for e-n:            t = -0.362857  p = 0.717369
+78: ttest_ind for e-n:            t = 0.46477  p = 0.64296
+77: ttest_ind for e-n:            t = -0.863835  p = 0.389481
+76: ttest_ind for e-n:            t = 0.187861  p = 0.851308
+75: ttest_ind for e-n:            t = 0.184953  p = 0.853583
+74: ttest_ind for e-n:            t = 0.799144  p = 0.426037
+73: ttest_ind for e-n:            t = 0.346385  p = 0.729688
+72: ttest_ind for e-n:            t = -0.26642  p = 0.790386
+71: ttest_ind for e-n:            t = -0.401912  p = 0.688513
+70: ttest_ind for e-n:            t = -0.731838  p = 0.465721
+69: ttest_ind for e-n:            t = -0.894538  p = 0.372937
+68: ttest_ind for e-n:            t = 0.876225  p = 0.38307
+67: ttest_ind for e-n:            t = -0.151585  p = 0.879773
+66: ttest_ind for e-n:            t = -0.576025  p = 0.565771
+65: ttest_ind for e-n:            t = -1.42661  p = 0.156556
+64: ttest_ind for e-n:            t = 0.20335  p = 0.839214
+63: ttest_ind for e-n:            t = -0.686019  p = 0.494135
+62: ttest_ind for e-n:            t = 2.07289  p = 0.0416111
+61: ttest_ind for e-n:            t = 1.92513  p = 0.0567279
+60: ttest_ind for e-n:            t = 0.338551  p = 0.735555
+59: ttest_ind for e-n:            t = 0.0729147  p = 0.941999
+58: ttest_ind for e-n:            t = -0.747921  p = 0.456022
+57: ttest_ind for e-n:            t = -0.0909589  p = 0.927683
+56: ttest_ind for e-n:            t = 0.483232  p = 0.629843
+55: ttest_ind for e-n:            t = 0.683209  p = 0.49585
+54: ttest_ind for e-n:            t = -0.518231  p = 0.605303
+53: ttest_ind for e-n:            t = 0.472912  p = 0.637233
+52: ttest_ind for e-n:            t = -0.282156  p = 0.778319
+51: ttest_ind for e-n:            t = -0.745864  p = 0.457239
+50: ttest_ind for e-n:            t = 0.0492245  p = 0.960825
+49: ttest_ind for e-n:            t = -1.15645  p = 0.249836
+48: ttest_ind for e-n:            t = 0.695564  p = 0.48809
+47: ttest_ind for e-n:            t = -0.625372  p = 0.532939
+46: ttest_ind for e-n:            t = -0.675889  p = 0.500442
+45: ttest_ind for e-n:            t = 0.63084  p = 0.529369
+44: ttest_ind for e-n:            t = -0.503286  p = 0.615839
+43: ttest_ind for e-n:            t = -1.03109  p = 0.304611
+42: ttest_ind for e-n:            t = -0.661209  p = 0.50988
+41: ttest_ind for e-n:            t = -0.250923  p = 0.802324
+40: ttest_ind for e-n:            t = -1.40047  p = 0.164056
+39: ttest_ind for e-n:            t = 0.1276  p = 0.898699
+38: ttest_ind for e-n:            t = 1.04334  p = 0.299179
+37: ttest_ind for e-n:            t = 0.165207  p = 0.869072
+36: ttest_ind for e-n:            t = 0.155935  p = 0.876354
+35: ttest_ind for e-n:            t = -0.65372  p = 0.514608
+34: ttest_ind for e-n:            t = -1.54031  p = 0.126406
+33: ttest_ind for e-n:            t = 0.117165  p = 0.906929
+32: ttest_ind for e-n:            t = -0.654883  p = 0.513855
+31: ttest_ind for e-n:            t = -0.525137  p = 0.600478
+30: ttest_ind for e-n:            t = -0.96032  p = 0.338884
+29: ttest_ind for e-n:            t = -1.26594  p = 0.20808
+28: ttest_ind for e-n:            t = 0.784382  p = 0.4346
+27: ttest_ind for e-n:            t = -1.28791  p = 0.200303
+26: ttest_ind for e-n:            t = 0.101349  p = 0.919456
+25: ttest_ind for e-n:            t = 0.639475  p = 0.523761
+24: ttest_ind for e-n:            t = -0.381483  p = 0.703539
+23: ttest_ind for e-n:            t = 1.60517  p = 0.111322
+22: ttest_ind for e-n:            t = 0.651426  p = 0.516038
+21: ttest_ind for e-n:            t = -0.310623  p = 0.756638
+20: ttest_ind for e-n:            t = -1.11781  p = 0.266326
+19: ttest_ind for e-n:            t = -1.13515  p = 0.258698
+18: ttest_ind for e-n:            t = 0.373383  p = 0.709533
+17: ttest_ind for e-n:            t = 0.783324  p = 0.43523
+16: ttest_ind for e-n:            t = -0.357263  p = 0.721563
+15: ttest_ind for e-n:            t = 0.392237  p = 0.695646
+14: ttest_ind for e-n:            t = 0.690523  p = 0.491282
+13: ttest_ind for e-n:            t = -1.7474  p = 0.0835757
+12: ttest_ind for e-n:            t = 0.633209  p = 0.527848
+11: ttest_ind for e-n:            t = -1.10097  p = 0.273472
+10: ttest_ind for e-n:            t = -1.25746  p = 0.211174
+9: ttest_ind for e-n:            t = 0.874497  p = 0.383724
+8: ttest_ind for e-n:            t = 0.875872  p = 0.382895
+7: ttest_ind for e-n:            t = 0.0132822  p = 0.989429
+6: ttest_ind for e-n:            t = 0.486988  p = 0.627222
+5: ttest_ind for e-n:            t = 0.0447827  p = 0.964356
+4: ttest_ind for e-n:            t = 0.752918  p = 0.453072
+3: ttest_ind for e-n:            t = 0.533685  p = 0.594591
+2: ttest_ind for e-n:            t = -1.03254  p = 0.304003
+1: ttest_ind for e-n:            t = 0.498895  p = 0.618819
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.0105286554037
+75: ttest_ind for e-n:            t = 2.65087  p = 0.0093263
+33: ttest_ind for e-n:            t = 2.2522  p = 0.0263661
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+extreme - nonextreme: 0.0132446529567
+86: ttest_ind for e-n:            t = 2.39169  p = 0.0191841
+60: ttest_ind for e-n:            t = 2.32753  p = 0.0216867
+55: ttest_ind for e-n:            t = -2.37473  p = 0.0193327
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+^Z
+[9]+  Stopped                 python split_weather.py
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+91: ttest_ind for h-c:            t = -2.23225  p = 0.0287771
+87: ttest_ind for h-c:            t = -2.04784  p = 0.0437315
+83: ttest_ind for h-c:            t = -2.26456  p = 0.0258592
+75: ttest_ind for h-c:            t = -2.85313  p = 0.00533214
+61: ttest_ind for h-c:            t = -2.0465  p = 0.0434484
+54: ttest_ind for h-c:            t = -2.43265  p = 0.0168027
+51: ttest_ind for h-c:            t = -2.41234  p = 0.0177287
+32: ttest_ind for h-c:            t = -3.0825  p = 0.00279158
+27: ttest_ind for h-c:            t = -2.20158  p = 0.0300666
+25: ttest_ind for h-c:            t = -2.04251  p = 0.0438855
+22: ttest_ind for h-c:            t = -2.10078  p = 0.0383193
+20: ttest_ind for h-c:            t = -2.48525  p = 0.0148115
+15: ttest_ind for h-c:            t = -2.36073  p = 0.020643
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+6: ttest_ind for h-c:            t = -2.93197  p = 0.00438007
+5: ttest_ind for h-c:            t = -2.31844  p = 0.0226523
+1: ttest_ind for h-c:            t = -3.29024  p = 0.00147157
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+10: ttest_ind for h-c:            t = -2.06094  p = 0.0457197
+7: ttest_ind for h-c:            t = -2.45055  p = 0.0173307
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+10: ttest_ind for h-c:            t = -2.35226  p = 0.023005
+5: ttest_ind for h-c:            t = -2.20924  p = 0.0345355
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+  File "split_weather.py", line 71
+    print mean_confidence_interval(data, confidence=0.95):
+                                                         ^
+SyntaxError: invalid syntax
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+88.7312953202 108.114857143
+117.37516287 118.367348571
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+  File "split_weather.py", line 65
+    two_sample_t_test(cold, normal):
+                                   ^
+SyntaxError: invalid syntax
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+88.7312953202 90.6482387084
+117.37516287 115.713188816
+Traceback (most recent call last):
+  File "split_weather.py", line 65, in <module>
+    two_sample_t_test(cold, normal)
+NameError: name 'two_sample_t_test' is not defined
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+(141.12171219344319, 5.181714988544202e-62)
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+89.2391955345 90.6482387084
+117.442090473 115.713188816
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+92: ttest_ind for h-c:            t = 2.27712  p = 0.0249531
+81: ttest_ind for h-c:            t = 2.72152  p = 0.00794522
+80: ttest_ind for h-c:            t = -2.29006  p = 0.0243698
+70: ttest_ind for h-c:            t = 2.09117  p = 0.0395572
+53: ttest_ind for h-c:            t = 2.44443  p = 0.016683
+44: ttest_ind for h-c:            t = -2.52719  p = 0.0135394
+40: ttest_ind for h-c:            t = 2.59266  p = 0.0113636
+39: ttest_ind for h-c:            t = 2.57964  p = 0.011456
+34: ttest_ind for h-c:            t = 2.39232  p = 0.0187663
+23: ttest_ind for h-c:            t = 2.05413  p = 0.0427517
+21: ttest_ind for h-c:            t = 2.08686  p = 0.0395031
+15: ttest_ind for h-c:            t = 2.32273  p = 0.0225675
+9: ttest_ind for h-c:            t = 2.44765  p = 0.0168289
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+91.8940482929 90.3589198049
+119.456625973 115.554374005
+Traceback (most recent call last):
+  File "split_weather.py", line 139, in <module>
+    print "extreme - nonextreme: " + str(cohen_d(extreme, nonextreme))
+NameError: name 'cohen_d' is not defined
+dhcp-10-5-22-157:training Jerry$ python split_weather.py 
+91.8940482929 90.3589198049
+119.456625973 115.554374005
+268528 2761316
+extreme - nonextreme: 0.0132446529567
+92: ttest_ind for e-n:            t = 2.19133  p = 0.0307877
+68: ttest_ind for e-n:            t = -2.62178  p = 0.0100411
+65: ttest_ind for e-n:            t = -3.02442  p = 0.00326013
+64: ttest_ind for e-n:            t = 2.12619  p = 0.0356874
+60: ttest_ind for e-n:            t = 3.09366  p = 0.00265239
+45: ttest_ind for e-n:            t = -2.82795  p = 0.00580294
+dhcp-10-5-22-157:training Jerry$ 
