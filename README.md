@@ -15,7 +15,7 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
   
   <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/super_popular_venus_NYC.png" width="360">
 
-* To make the area prediction as informative as possible, we have clustered 0.2-million check-ins into 500 regions in NYC according to those check-ins
+* To make the area prediction as informative as possible, we have clustered 0.2-million check-in into 500 regions in NYC according to those check-ins
   
   
   <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/nyc_popular_region_clustering_500.png" width="360">
@@ -23,6 +23,10 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
 * The cluster centers in NYC,  the cluster method we have employed is k-means++
   
   
-  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/cluster_centers.png" width="360">
+  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/cluster_centers.png" width="360">
+  
+### Update
+1. We have collected 220 million yellow cab trip data from *nyc opendata*, we are trying our best to process and analyze them.
+2. we will keep updating our progresses...
 
-we will keep updating our progresses...
+ 
