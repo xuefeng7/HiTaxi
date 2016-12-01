@@ -24,7 +24,8 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
   
   
   <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/cluster_centers.png" width="360">
-  
+
+
 ### Update
 1. We have collected 220 million yellow cab trip data from *nyc opendata*, we are trying our best to process and analyze them.
 2. we will keep updating our progresses...
