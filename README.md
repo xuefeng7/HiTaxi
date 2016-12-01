@@ -1,4 +1,4 @@
-#<img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/hitaxi.png" width="240"> HiTaxi
+#<img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/hitaxi.png" width="240"><img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/name.png" width="100">
 ## High Taxi Demanding Prediction in NYC by Time, Region, Facility, Event and Weather.
 ##### A University of Rochester VISTA Lab project dedicated to ubran computing research
 
@@ -13,21 +13,47 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
 * The super popluar regions in NYC according to 200,000 check-ins from FourSquare
   
   
-  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/super_popular_venus_NYC.png" width="360">
+  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/super_popular_venus_NYC.png" width="480">
 
 * To make the area prediction as informative as possible, we have clustered 0.2-million check-in into 500 regions in NYC according to those check-ins
   
   
-  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/nyc_popular_region_clustering_500.png" width="360">
+  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/nyc_popular_region_clustering_500.png" width="480">
 
 * The cluster centers in NYC,  the cluster method we have employed is k-means++
   
   
-  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/cluster_centers.png" width="360">
+  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/cluster_centers.png" width="480">
 
+* The monthly demand/trip
+
+
+ <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/monthly demand.png" width="480">
+
+* The demand/trip and hour distribution
+
+
+ <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/demand:hr.png" width="480">
+
+* The demand/trip and weekday distribution
+
+
+ <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/demand:weekday.png" width="480">
+
+* The demand/trip and temperature distribution
+
+
+ <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/demand:temp.png" width="480">
+
+* The demand/trip and weather condition  distribution
+
+
+ <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/demand:wc.png" width="480">
+
+Note: Demand indicates the total passenger count, whereas the trip indicates one single taxi trip.
 
 ### Update
-1. We have collected 220 million yellow cab trip data from *nyc opendata*, we are trying our best to process and analyze them.
+1. We have collected 220 million yellow cab trip data (2014)  from *nyc opendata*, we are trying our best to process and analyze them.
 2. we will keep updating our progresses...
 
  
