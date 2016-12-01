@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor
 ### create feature matrix
 
 # CONSTANT
-FEATURE_SIZE = 6
+FEATURE_SIZE = 7
 TRAIN_SIZE = 3029912
 TEST_SIZE = 1477769
 
@@ -28,14 +28,24 @@ def read_obser_set(set_name, SIZE):
 		obser_count = 0
 		for observation in tf:
 			observation = observation.split(",")
+			region = observation[0]
 			# use numeric representation of month and date
-			observation[1] = observation[1].replace("/","")
+			# month
+			month = observation[1].split("/")[0]
+			# date
+			date = observation[1].split("/")[1]
+			# hr
+			hr = observation[2]
+			# weekday
+			weekday = observation[3]
 			# use digit to represent weather condition
-			observation[5] = weather_code[observation[5].split('(')[0]]
+			cond_code = str(weather_code[observation[5].split('(')[0]])
+			# temp
+			temp = observation[4]
 			# the last element is the ground truth of the demanding count
 			truth = int(observation.pop())
 			# input features
-			feature_matrix[obser_count] = observation
+			feature_matrix[obser_count] = [region, month, date, hr, weekday, temp, cond_code]
 			# input truth
 			truth_vector[obser_count] = truth
 			obser_count += 1
@@ -58,7 +68,7 @@ test_feature_matrix, test_truth_vector = read_obser_set('trainset_2015_.txt', TE
 # 
 # params_grid = {"max_features":[1, 2, 3], "bootstrap": [True, False], "n_estimators":[100, 200, 300]}
 #GridSearchCV(RandomForestRegressor(oob_score=True, n_jobs=6), cv=10, param_grid=params_grid)
-rfr = RandomForestRegressor(n_estimators=100, max_features=FEATURE_SIZE, oob_score=True, n_jobs=6)
+rfr = RandomForestRegressor(n_estimators=100, max_features=FEATURE_SIZE, oob_score=True, n_jobs=2)
 print "Training..."
 start_time = time.time()
 rfr.fit(train_feature_matrix, train_truth_vector)
