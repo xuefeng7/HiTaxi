@@ -1,4 +1,4 @@
-# HiTaxi <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/hitaxi.png" width="180">
+# HiTaxi <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/hitaxi.png" width="240">
 ## High Taxi Demanding Prediction in NYC by Time, Region, Facility, Event and Weather.
 #### A University of Rochester VISTA Lab project dedicated to ubran computing research
 
