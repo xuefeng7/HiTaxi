@@ -10,7 +10,7 @@ With the same goal of creating smarter cities, we are particularly interested in
 In this project, We aim not only to suggest taxi drivers with high taxi demanding regions in real-time, but also to uncover some insightful taxi demanding patterns given NYC's extraordinarily high density.
 
 ### Fun Fact
-* The super popluar regions in NYC according to 200,000 check-ins form FourSquare
+* The super popluar regions in NYC according to 200,000 check-ins from FourSquare
   
   
   <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/super_popular_venus_NYC.png" width="360">
