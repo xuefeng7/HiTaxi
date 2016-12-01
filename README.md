@@ -15,7 +15,7 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
   
   <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/super_popular_venus_NYC.png" width="360">
 
-* To make the area prediction as informative as possible, we have clustered 500 regions in NYC according to those check-ins
+* To make the area prediction as informative as possible, we have clustered 0.2-million check-ins into 500 regions in NYC according to those check-ins
   
   
   <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/nyc_popular_region_clustering_500.png" width="360">
