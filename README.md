@@ -11,10 +11,20 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
 
 ### Fun Fact
 1. The super popluar regions in NYC according to 200,000 check-ins form FourSquare
+
+
 <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/super_popular_venus_NYC.png" width="360">
-2.To make the area prediction as informative as possible, therefore, we have clustered 500 regions in NYC according to those check-ins
+
+
+2. To make the area prediction as informative as possible, therefore, we have clustered 500 regions in NYC according to those check-ins
+
+
 <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/nyc_popular_region_clustering_500.png" width="360">
-3.The cluster centers in NYC,  the cluster method we have employed is k-means++
+
+
+3. The cluster centers in NYC,  the cluster method we have employed is k-means++
+
+
 <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/cluster_centers.png" width="360">
 
 we will keep updating our progresses...
