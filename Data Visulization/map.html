@@ -26,11 +26,53 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamVycnlwZW5nIiwiYSI6ImNpdmNwM2RldjAxNnAyb3Bka
     // .setView([40.73, -74.011], 13); // set view to NYC nearby
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
+    style: 'mapbox://styles/mapbox/dark-v9',
     center: [-74.011, 40.73],
     zoom: 10
 });
+
+var zoomThreshold = 4;
+
 map.on('load', function(){
+            
+            $.getJSON("./region_type_color.json", function(typemap) {
+                
+                colormap = ['#ff4777','#70f3ff','#fff143']
+                
+                for(var i = 1; i <= 500; i++) {
+                    
+                    type = typemap[i + ""]
+                    
+                    src_id = 'r_type_' + i;
+                    filename = "clusters_500/popular_venue_" + i + ".geojson"
+                    //"venue_type/popular_venue_" + i + ".geojson"
+                    //"clusters_500/popular_venue_" + i + ".geojson"
+                   
+                    map.addSource(src_id, {
+                        type: "geojson",
+                        data: './' + filename
+                    });
+                    
+                    color = colormap[parseInt(type) - 1]
+                    opacity = 0.6
+                    radius = 6
+                    if (parseInt(type) == 1) {
+                        opacity = 0.5
+                        radius  = 2.2
+                    }
+                    map.addLayer({
+                        "id": "Type-" + i,
+                        "type": "circle",
+                        "source": src_id,
+                        "paint": {
+                            "circle-color": color,
+                            'circle-opacity': opacity,
+                            'circle-radius': radius
+                        }
+                    });
+                }
+            });
+});
             // map.setPaintProperty('water', 'fill-color', '#0f6296');
             // $.getJSON("./clustercenters.geojson", function(centers) {
                 
@@ -65,32 +107,32 @@ map.on('load', function(){
             //         "circle-radius": 3
             //     }
             // });
-     $.getJSON("color_500.json", function(colors) {
-            // var layers = [];
-            // for(var i = 0; i < 30; i++) {
-            //     color = colors[i]['color'];
-            //     layers.push(color);
-            // }
-            // layers.forEach(function (layer, i) {
-            //     var src_id = "venues-" + (i);
-                map.addSource(src_id, {
-                    type: "geojson",
-                    // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
-                    // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
-                    data: './clusters_500/popular_venue_' + 90 + '.geojson'
-                });
+    //  $.getJSON("color_500.json", function(colors) {
+    //         // var layers = [];
+    //         // for(var i = 0; i < 30; i++) {
+    //         //     color = colors[i]['color'];
+    //         //     layers.push(color);
+    //         // }
+    //         // layers.forEach(function (layer, i) {
+    //         //     var src_id = "venues-" + (i);
+    //             map.addSource(src_id, {
+    //                 type: "geojson",
+    //                 // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
+    //                 // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
+    //                 data: './clusters_500/popular_venue_' + 90 + '.geojson'
+    //             });
 
-                map.addLayer({
-                    "id": "cluster-" + (i + 1),
-                    "type": "circle",
-                    "source": src_id,
-                    "paint": {
-                        "circle-color": layer,
-                        'circle-opacity': 0.6,
-                        "circle-radius": 1.8
-                    }
-                });
-    });
+    //             map.addLayer({
+    //                 "id": "cluster-" + (i + 1),
+    //                 "type": "circle",
+    //                 "source": src_id,
+    //                 "paint": {
+    //                     "circle-color": layer,
+    //                     'circle-opacity': 0.6,
+    //                     "circle-radius": 1.8
+    //                 }
+    //             });
+    // });
                 // });
 // });
     

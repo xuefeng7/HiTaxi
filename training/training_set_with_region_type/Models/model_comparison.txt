@@ -1,0 +1,90 @@
+rfr = (n_estimator=120, feature=fs/3)
+-----------------------------------------------------------------
+---- Training rfr for type 1
+Training completed in 465.466713905s
+rfr oob score: 0.881446446053
+rfr feature_importances:[ 0.0222157   0.02830577  0.24126021  0.06287015  0.03748761  0.003626
+  0.0681801   0.02515043  0.13556478  0.07448376  0.05301459  0.04903554
+  0.11235455  0.0864508 ]
+
+---- Training rfr for type 2
+Training completed in 10.6284790039s
+rfr oob score: 0.808801071339
+rfr feature_importances:[ 0.03864419  0.03810653  0.28844061  0.04414279  0.05872454  0.003939
+  0.11289356  0.          0.07570977  0.0298302   0.03333196  0.15654783
+  0.09922267  0.02046635]
+
+---- Training rfr for type 3
+Training completed in 3.50999379158s
+rfr oob score: 0.848682863161
+rfr feature_importances:[ 0.05945567  0.05830545  0.27824573  0.04771782  0.07514427  0.0076733
+  0.04192934  0.15326492  0.15108176  0.00633971  0.01282939  0.03229306
+  0.0414331   0.03428649]
+
+
+rfr = (n_estimator=600, feature=fs/3) for type I and type II
+-----------------------------------------------------------------
+generating fm for type 2
+Training rfr for type 2
+Training completed in 75.1917660236s
+rfr oob score: 0.810724521995
+rfr feature_importances:[ 0.03837705  0.0383516   0.28275786  0.04486368  0.05842485  0.00395057
+  0.11051499  0.          0.0823272   0.02843995  0.04397175  0.15272787
+  0.09574303  0.01954962]
+generating fm for type 3
+Training rfr for type 3
+Training completed in 16.8687989712s
+rfr oob score: 0.852183604778
+rfr feature_importances:[ 0.05889424  0.05859014  0.28074043  0.04672598  0.07554372  0.00761048
+  0.06189084  0.14639667  0.14284449  0.00589304  0.01150945  0.02585541
+  0.03999447  0.03751064]
+
+
+mlpr
+-------
+Using Theano backend.
+reading data...
+nn: epoch=300, batch_size=20, wider_hiddeb_layer=4
+training estimator...
+evaluating estimator...
+[ 0.87214417  0.86931781  0.87509199  0.86413223  0.86280712]
+mean r^2 = 0.868698664
+evaluting costs 28399.9508791s
+
+
+mlpr for type II and III
+-------
+Using Theano backend.
+reading data...
+generating fm for type 2
+nn: epoch=1000, batch_size=20, wider_hiddeb_layer=4
+training estimator...
+evaluating estimator...
+[ 0.82682183  0.84690646  0.84749771  0.84286879  0.83194336]
+mean r^2 = 0.83920763
+evaluting costs 4880.52537894s
+saving estimator...
+generating fm for type 3
+nn: epoch=1000, batch_size=20, wider_hiddeb_layer=4
+training estimator...
+evaluating estimator...
+[ 0.812831    0.82077932  0.80288101  0.81018901  0.82383758]
+mean r^2 = 0.814103584
+evaluting costs 1572.75058293s
+saving estimator...
+
+
+svr
+------
+SVR(C=100, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma='auto',
+  kernel='rbf', max_iter=-1, shrinking=True, tol=0.001, verbose=False)
+0.670626953349
+Training svr(cache_size=200) for type 3
+SVR(C=100, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma='auto',
+  kernel='rbf', max_iter=-1, shrinking=True, tol=0.001, verbose=False)
+0.74551446548
+
+
+
+
+
