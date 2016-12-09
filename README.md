@@ -1,6 +1,6 @@
 #<img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/hitaxi.png" width="240"><img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/name.png" width="100">
 ## High Taxi Demanding Prediction in NYC by Time, Region, Facility, Event and Weather.
-##### A University of Rochester VISTA Lab project dedicated to ubran computing research
+##### A University of Rochester VISTA Lab project dedicated to urban computing research
 
 ### Intro
 Heavy traffic, untampered energy waste, deteriorating public safety, illegal drug dealings, and etc., all of those issues are ineluctable for a growing city. With more and more concerns towards those issues, people are determined to seek solutions that are able to not only ease them but also eradicate them. This determination finally leads people to urban computing --- a solution empowered by massive computing capabilities. This new way is not limited to solely solve those common issues a developing city may encounter, it aims to plan the city to be more intelligent in various aspects. Many researches are conducted with the goal of making cities smarter, some of them endeavor to improve the city traffic by proposing a large-scale taxi/bike ridesharing service, some of them endeavor to monitor and predict the air/water quality of certain city regions, and some of them are interested in energy consumption control via supervising urbane refueling behaviors. Those researches show numerous promising potentialities of urban computing.
@@ -51,6 +51,10 @@ In this project, We aim not only to suggest taxi drivers with high taxi demandin
  <img src="https://github.com/xuefeng7/HiTaxi/blob/master/figure/demand:wc.png" width="480">
 
 Note: Demand indicates the total passenger count, whereas the trip indicates one single taxi trip.
+
+### Region Refinement   
+we have clustered all popular checkin points into 500 regions so that they cover almost every popular region in the city of New York. However, we want to further classify those 500 regions into several clusters so that each one of them could represent some special and unique characters. To achieve this goal, our firs task is to identify how many type of venues are inside each region. According to the type of checkin points provided by Foursquare, we assign each region with eight venue types, they are Arts & Entertainment, College & University, Food, Great Outdoors, Home & Work, Nightlife Spot, Shop, and Travel Spot. If a checkin point, whose venue type is Food, falls into the region, then Food venue type of this specific region will be incremented by one. By doing this, we will have a venue feature vector for each region, and then we again run k-means++ on those 500 regions again and separate them by their venue feature vectors.
+
 
 ### Update
 1. We have collected 220 million yellow cab trip data (2014)  from *nyc opendata*, we are trying our best to process and analyze them.
